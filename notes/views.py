@@ -7,7 +7,7 @@ from .models import Note as Notes
 class NotesCreateView(CreateView):
     model = Notes
     fields = ['title', 'content']
-    success_url = "/smart/notes"
+    success_url = "/mynote/notes"
 class NotesListView(ListView):
     model = Notes
     context_object_name = "notes"
