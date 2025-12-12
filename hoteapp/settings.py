@@ -123,3 +123,9 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
+
+
+IS_CODESPACES = os.environ.get("CODESPACES") == 'true'
+
+if IS_CODESPACES:
+    CSRF_TRUSTED_ORIGINS = ["https://localhost:8000"]
