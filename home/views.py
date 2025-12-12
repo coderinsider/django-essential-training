@@ -8,8 +8,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class HomeView(TemplateView):
     # pass the code
-    template_name = "home/index.html"
-    extra_content = {'currentDay': datetime.now().strftime("%b %d, %Y %H:%M:%S")}
+    template_name = "home/welcome.html"
+    extra_context = {'currentDay': datetime.now().strftime("%b %d, %Y %H:%M:%S")}
 # def home(request):
 #     dataArray = {'date': datetime.now().strftime("%b %d, %Y %H:%M:%S")}
 #     return render(request, 'home/index.html', dataArray)
