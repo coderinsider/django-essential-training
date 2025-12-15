@@ -5,6 +5,13 @@
     <h1 class="my-5">{{note.title}}</h1>
     <p>{{note.content}}</p>
 </div>
+<form method="post" class="d-inline" action="{% url 'notes.add_liked' pk=note.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-secondary my-5">UpVote</button>
+</form>
+<p>{{ note.likes }} Likes</p>
+
 <a href="{% url 'notes.list' %}" class="btn btn-secondary my-5">Back</a>
 <a href="{% url 'notes.update' pk=note.id %}" class="btn btn-primary my-5">Update</a>
 <a href="{% url 'notes.delete' pk=note.id %}" class="btn btn-danger my-5">Delete</a>
