@@ -5,8 +5,10 @@ from django.urls import reverse
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 from django.views.generic.edit import DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView
 from .forms import NotesForm
 from .models import Note as Notes
+
 
 
 def is_public_view(request, pk):
