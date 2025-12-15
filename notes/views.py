@@ -38,6 +38,8 @@ class NotesUpdatedView(UpdateView):
     # fields = ['title', 'content']
     success_url = "/mynote/notes"
     form_class = NotesForm    
+
+
 class NotesCreateView(CreateView):
     model = Notes
     # fields = ['title', 'content']
@@ -61,6 +63,11 @@ class NotesDetailsView(DetailView):
     model = Notes
     context_object_name = "note"
 
+
+class NotePublicDetailView(DetailView):
+    model = Notes
+    context_object_name = "note"
+    queryset = Notes.objects.filter(is_public=True)
 # class PopularNotesListView(DetailView):
 #     model = Notes
 #     context_object_name = "notes"
