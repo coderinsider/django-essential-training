@@ -9,3 +9,4 @@ class Note(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     likes  = models.PositiveBigIntegerField(default=0)
     user  = models.ForeignKey(User, on_delete=models.CASCADE, related_name="notes")
+    is_public = models.BooleanField(default=False)

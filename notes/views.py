@@ -9,6 +9,14 @@ from .forms import NotesForm
 from .models import Note as Notes
 
 
+def is_public_view(request, pk):
+    # pass the code
+    if request.method == "POST":
+        note = get_object_or_404(Notes, pk=pk)
+        note.is_public = not note.is_public
+        note.save()
+        return HttpResponseRedirect(reverse("notes.detail", args=(pk,)))
+    raise Http404
 def add_liked_view(request, pk):
     # pass the code
     if request.method == "POST":
@@ -17,7 +25,6 @@ def add_liked_view(request, pk):
         note.save()
         return HttpResponseRedirect(reverse("notes.detail", args=(pk,)))
     raise Http404
-
 class NotesDeletedView(DeleteView):
     model = Notes
     # fields = ['title', 'content']
