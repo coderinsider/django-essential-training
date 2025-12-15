@@ -6,6 +6,18 @@
     </head>
 
     <body>
+      <nav class="navbar navbar-dark bg-dark">
+        <div class="ms-auto">
+          <a href="{% url 'hote.home' %}" class="btn btn-outline-light me-1">Home</a>
+          {% if user.is_authenticated %}
+            <form action="{% url 'hote.logout' %}" method="post" class="d-inline">{{ csrf_token }}
+              <button type="submit" class="btn btn-outline-light me-1">Logout</button>
+            </form>
+          {% else %}
+            <a href="{% url 'hote.login' %}" class="btn btn-outline-light me-1">Login</a>
+          {% endif %}
+        </div>
+      </nav>
       <div class="my-5 text-center container"> 
         {% block content %}
         {% endblock %}
